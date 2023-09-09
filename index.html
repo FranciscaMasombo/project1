@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookTok TBR</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+</head>
+
 <body>
     <section class="header">
         <nav>
@@ -29,31 +33,89 @@
             About #BookTok
         </h1>
         <p>
-            BookTok, the literary corner of TikTok, has taken the world by storm, where bookworms and bibliophiles unite to share their latest literary obsessions. In 60-second videos, readers passionately discuss their favorite novels, reveal hidden gems, and offer heartfelt reviews, all while showcasing their creative bookish aesthetics. With its engaging and diverse community, BookTok has become an online haven for book lovers to discover, discuss, and celebrate the magic of storytelling, one viral video at a time.
+            BookTok, the literary corner of TikTok, has taken the world by storm, where bookworms and bibliophiles unite
+            to share their latest literary obsessions. In 60-second videos, readers passionately discuss their favorite
+            novels, reveal hidden gems, and offer heartfelt reviews, all while showcasing their creative bookish
+            aesthetics. With its engaging and diverse community, BookTok has become an online haven for book lovers to
+            discover, discuss, and celebrate the magic of storytelling, one viral video at a time.
         </p>
     </section>
     <section class="tbr">
-            <h1>TBR (To Be Read) </h1>
-        <div class="tbrContainer">
+        <h1>TBR (To Be Read) </h1>
+        <table class="tbrContainer">
+            <tr>
+                <th> To Be Read</th>
+                <th> Read </th>
+            </tr>
+            <tr>
+                <td>
+                    <div id="left">
+                        <div class="list" draggable="true"><img src="images/verity.jpeg">
+                            Verity by Colleen Hoover <br>
+                            Thriller, Romance, Mink Fuck
+                        </div>
+                        <div class="list" draggable="true"><img src="images/verity.jpeg">
+                            Verity by Colleen Hoover <br>
+                            Thriller, Romance, Mink Fuck
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div id="right">
+                       
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- <div class="tbrContainer">
             <div id="left">
-                
+
             </div>
             <div id="right">
 
             </div>
 
-        </div>
+        </div> -->
 
     </section>
     <script>
         // Navigation code to display 
         var navLinks = document.getElementById('navLinks');
-        function showMenu(){
+        function showMenu() {
             navLinks.style.right = "0";
         }
-        function hideMenu(){
+        function hideMenu() {
             navLinks.style.right = "-250px";
         }
+
+        let lists  = document.getElementsByClassName('list');
+        let rightBox  = document.getElementById('right');
+        let leftBox  = document.getElementById('left');
+        for(list of lists){
+            list.addEventListener("dragstart", function(e){
+                let selected = e.target; 
+
+                rightBox.addEventListener("dragover", function(e){
+                    e.preventDefault();
+                });
+
+                rightBox.addEventListener("drop", function(e){
+                    rightBox.appendChild(selected);
+                    selected = null;
+                });
+
+                leftBox.addEventListener("dragover", function(e){
+                    e.preventDefault();
+                });
+
+                leftBox.addEventListener("drop", function(e){
+                    leftBox.appendChild(selected);
+                    selected = null;
+                });
+            })
+        }
+
     </script>
 </body>
+
 </html>
